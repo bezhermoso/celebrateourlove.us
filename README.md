@@ -1,13 +1,18 @@
 # L &amp; B
 
+Site is generated with
+[generator-jekyllized](https://github.com/sondr3/generator-jekyllized)
+
+[Forever
+Theme](http://themeforest.net/item/forever-responsive-html-wedding-template/11994338)
+from [DoubleEight](http://themeforest.net/user/doubleeight)
+
+
 ## To get started
 
 ```sh
 $ gulp
 ```
-
-And you'll have a new Jekyll site generated for you and displayed in your
-browser. Neato.
 
 ## Usage
 
