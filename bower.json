@@ -1,0 +1,17 @@
+{
+  "name": "forever-wedding",
+  "version": "0.0.0",
+  "authors": [
+    "Bez Hermoso <bezalelhermoso@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+  }
+}
