@@ -243,7 +243,7 @@ function initializeHotelMarkers() {
   //ADD NEW MARKER WITH LABEL
   //=======================================================================================
 
-  var definitions = HotelMarkers.map(function (definition) {
+  HotelMarkers = HotelMarkers.map(function (definition) {
     var markerOptions = Markers.createMarker(definition, map);
     definition.marker = new MarkerWithLabel(markerOptions);
     //definition.marker = definition.create(map);
@@ -257,10 +257,18 @@ function initializeHotelMarkers() {
         definition.openInfoWindow();
       });
     };
+    definition.center = function (zoomLevel) {
+      map.setCenter(definition.marker.getPosition());
+      if (zoomLevel) {
+        map.setZoom(zoomLevel);
+      }
+    };
+    definition.map = map;
     return definition;
   });
 
-  definitions = definitions.concat([Markers.ceremony, Markers.reception, airportMarker].map(function (definition) {
+
+  var definitions = HotelMarkers.concat([Markers.ceremony, Markers.reception, airportMarker].map(function (definition) {
     var options = Markers.createMarker(definition, map);
     definition.marker = new MarkerWithLabel(options);
     if (definition.infoWindow) {
@@ -321,4 +329,16 @@ function initializeHotelMarkers() {
 // LOAD GMAP
 google.maps.event.addDomListener(window, 'load', initialize);
 google.maps.event.addDomListener(window, 'load', initializeHotelMarkers);
+
+function showOnMap(hotelIndex) {
+  $("html, body").animate({
+    scrollTop: $('#hotel-map-section').position().top + "px"
+  });
+  HotelMarkers.filter(function (definition) {
+    return definition.hotelIndex == hotelIndex;
+  }).forEach(function (definition) {
+    definition.center(19);
+    definition.openInfoWindow();
+  });
+};
 
