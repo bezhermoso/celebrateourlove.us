@@ -1,0 +1,132 @@
+---
+layout: page
+regenerate: true
+permalink: /travel/
+---
+<section id="travel">
+    <section id="photo-divider">
+        <div class="image-divider fixed-height" style="background-image:url(/assets/images/map.png); height:300px" data-stellar-background-ratio="0.3">
+            <h1 id="travel-and-accomodation-title">Travel & Accomodation</h1>
+        </div>
+    </section>
+    <section id="naia-notice-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="bg-danger">
+                        <p>If travelling to the Philippines, please avoid connecting flights to Ninoy Aquino International Airport (NAIA).
+                        <a href="http://www.cnn.com/2015/11/04/aviation/philippines-airport-bullet-bag-scam-tanim-bala/" target="_blank">Read more</a></p>
+                        <p style="margin-bottom: 0;">
+                        We recommend the following airlines: <em>Asiana Airlines</em>, <em>Korean Airlines</em>, and <em>Cathay Pacific</em>.
+                        These airlines has flights with Cebu as point-of-entry into the Philippines, allowing you to avoid NAIA and any subsequent connecting domestic flights.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="hotels">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="section-title">
+                        <h2>H<img src="/assets/images/heart-icon.png">TELS</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {% for hotel in site.hotels %}
+                <div class="col-md-4">
+                    <div class="hotel-item">
+                        <!--PHOTO-ITEM-->
+                        <div class="photo-item frame-border animation fadeIn">
+                            <!--PHOTO-->
+                            <img src="{{ hotel.image }}" alt="" class="hover-animation image-zoom hotel-img">
+                            <!--PHOTO OVERLAY-->
+                            <div class="layer wh100 hidden-black-overlay hover-animation fade-in">
+                            </div><!--END of PHOTO OVERLAY-->
+                            <!--ICON LINK-->
+                            <div class="layer wh100 hidden-link hover-animation delay1 fade-in">
+                                <div class="alignment">
+                                    <div class="v-align center-middle">
+                                        <a href="{{ hotel.website }}" target="_blank">
+                                            <div class="de-icon circle light medium-size inline">
+                                                <i class="de-icon-link"></i>
+                                            </div>
+                                        </a>
+                                        <a href="javascript:void(0);" target="_blank" onclick="showOnMap({{ forloop.index }});">
+                                            <div class="de-icon circle light medium-size inline">
+                                                <i class="de-icon-map"></i>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div><!--END of ICON LINK-->
+                        </div><!--END of PHOTO-ITEM-->
+                        <!-- TITLE & EXCERPT -->
+                        <div class="title-excerpt text-center">
+                            <h3 class="no-margin"><a href="#">{{ hotel.name }}</a></h3>
+                        </div><!-- END of TITLE & EXCERPT -->
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <section id="hotel-map-section">
+        <div id="hotel-map-canvas" style="height: 800px;"></div>
+    </section>
+</section>
+<script type="text/javascript">
+var HotelMarkers = [];
+
+{% for hotel in site.hotels %}
+HotelMarkers.push({
+    hotelIndex: {{ forloop.index }},
+    coordinates: function () {
+        return new google.maps.LatLng({{ hotel.coordinates[0] }}, {{ hotel.coordinates[1] }});
+    },
+    labelAnchor: function () {
+        return new google.maps.Point(20, 25);
+    },
+    infoWindow: function () {
+        return new google.maps.InfoWindow({
+            content: "{{ hotel.name }}"
+        });
+    },
+    options: {
+        draggable: false,
+        raiseOnDrag: false,
+        icon: ' ',
+        labelContent: '<div class="de-icon circle small-size" style="background-color:#67a80e"><i class="de-icon-home-circled"></i></div>',
+        labelClass: "labels" // the CSS class for the label
+    }
+});
+{% endfor %}
+
+var airportMarker = {
+    coordinates: function () {
+        return new google.maps.LatLng(10.3106609,123.9780274);
+    },
+    labelAnchor: function () {
+        return new google.maps.Point(29, 20);
+    },
+    infoWindow: function () {
+        return new google.maps.InfoWindow({
+            content:  [
+                '<div>',
+                'AIRPORT',
+                '</div>'
+            ].join('')
+        });
+    },
+    options: {
+        draggable: false,
+        raiseOnDrag: false,
+        icon: ' ',
+        labelContent: '<div class="de-icon circle medium-size" style="background-color:#FFF; border:1px solid red"><i class="de-icon-plane" style="color:#f0394d"></i></div>',
+        labelClass: "labels" // the CSS class for the label
+    }
+}
+
+</script>

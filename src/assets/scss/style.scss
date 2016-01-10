@@ -15,8 +15,35 @@
   padding: 140px 0;
 }
 
+section#travel {
+  background-color: #f6f6f6;
+}
+
 #save-the-date {
   text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+}
+
+#naia-notice-section {
+  padding: 50px 0;
+
+  .bg-danger {
+    padding: 20px; 
+    background-color: #F0394D;
+    color: #FFFFFF;
+
+    a, a:visited, a:active {
+      color: #FFF;
+      text-decoration: underline;
+    }
+  }
+}
+
+#hotels {
+  padding: 50px 0; 
+
+  .hotel-item {
+    margin-bottom: 20px;
+  }
 }
 
 #where-when {
@@ -25,6 +52,15 @@
 
 #guest-info{
   padding: 140px 0
+}
+
+h1#travel-and-accomodation-title
+{
+  text-align: center;
+  font-size: 60px;
+  padding: 60px 0;
+  font-family: "Pacifico", cursive; 
+  text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
 }
 
 @import '../css/skin/coral-sand/coral-sand';

@@ -197,7 +197,128 @@ function initialize() {
   });
 }
 
+function initializeHotelMarkers() {
+
+  //DEFINE MAP OPTIONS
+  //=======================================================================================
+  var mapOptions = {
+    //zoom: 13,		
+    mapTypeId: google.maps.MapTypeId.ROADMAP,	
+    center: new google.maps.LatLng(10.331132, 123.900536),
+    panControl: true,
+    zoomControl: true,
+    mapTypeControl: true,
+    scrollwheel: false,
+      //scaleControl: false,
+    streetViewControl: true,
+    overviewMapControl: true,
+      //rotateControl:true,
+
+  };
+
+  //CREATE NEW MAP
+  //=======================================================================================
+  var map = new google.maps.Map(document.getElementById('hotel-map-canvas'), mapOptions);
+
+  //MARKER ICON
+  //=======================================================================================
+  //var image = 'facebook30.svg';
+
+  //ADD NEW MARKER
+  //=======================================================================================
+  /*var marker = new google.maps.Marker({
+    position: map.getCenter(),
+    map: map,
+    title: 'Click to zoom',
+    icon: image
+    });
+
+    var marker1 = new google.maps.Marker({
+    position: new google.maps.LatLng(-12.042559, -77.027426),
+    map: map,
+    title: 'Click to zoom'
+    });*/
+
+
+  //ADD NEW MARKER WITH LABEL
+  //=======================================================================================
+
+  var definitions = HotelMarkers.map(function (definition) {
+    var markerOptions = Markers.createMarker(definition, map);
+    definition.marker = new MarkerWithLabel(markerOptions);
+    //definition.marker = definition.create(map);
+
+    if (definition.infoWindow) {
+      var infoWindow = definition.infoWindow();
+      definition.openInfoWindow = function () {
+        infoWindow.open(map, definition.marker);
+      };
+      google.maps.event.addListener(definition.marker, 'click', function () {
+        definition.openInfoWindow();
+      });
+    };
+    return definition;
+  });
+
+  definitions = definitions.concat([Markers.ceremony, Markers.reception, airportMarker].map(function (definition) {
+    var options = Markers.createMarker(definition, map);
+    definition.marker = new MarkerWithLabel(options);
+    if (definition.infoWindow) {
+      var infoWindow = definition.infoWindow();
+      definition.openInfoWindow = function () {
+        infoWindow.open(map, definition.marker);
+      };
+      //definition.openInfoWindow();
+      google.maps.event.addListener(definition.marker, 'click', function () {
+        definition.openInfoWindow();
+      });
+    };
+    return definition;
+  }));
+
+  var bounds = new google.maps.LatLngBounds();
+  bounds = definitions.reduce(function (bounds, definition) {
+     bounds.extend(definition.marker.getPosition());
+     return bounds;
+  }, bounds);
+  
+  map.fitBounds(bounds);
+
+  //ON MARKER CLICK EVENTS
+  //=======================================================================================
+  /*google.maps.event.addListener(marker, 'click', function() {
+    map.setZoom(17);
+    map.setCenter(marker.getPosition());
+    infowindow.open(map,marker);
+    });
+
+    google.maps.event.addListener(marker1, 'click', function() {
+    map.setZoom(17);
+    map.setCenter(marker.getPosition());
+    infowindow1.open(map,marker1);
+    });
+
+    google.maps.event.addListener(marker2, 'click', function() {
+    map.setZoom(17);
+    map.setCenter(marker.getPosition());
+    infowindow1.open(map,marker2);
+    });*/
+
+  //ON BOUND EVENTS AND WINDOW RESIZE
+  //=======================================================================================
+  google.maps.event.addListener(map, 'bounds_changed', function() {  		
+    if (is_windowresize)
+    {
+      //map.setCenter(marker.getPosition());
+      window.setTimeout(function() {
+        map.panTo(marker1.getPosition());
+      }, 500);
+    }
+    is_windowresize=false;
+  });
+}
+
 // LOAD GMAP
 google.maps.event.addDomListener(window, 'load', initialize);
-
+google.maps.event.addDomListener(window, 'load', initializeHotelMarkers);
 

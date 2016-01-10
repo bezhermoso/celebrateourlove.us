@@ -66,3 +66,7 @@ jekyll-archives:
     month: '/archive/:year/:month/'
     category: '/category/:name/'
     tags: '/tag/:name/'
+collections:
+  hotels:
+    output: false
+

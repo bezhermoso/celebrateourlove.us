@@ -1,13 +1,32 @@
----
-layout: default
----
-<article class="post">
-
-  <header class="post-header">
-    <h1 class="post-title">{{ page.title }}</h1>
-  </header>
-
-  <div class="post-content">
-    {{ content }}
-  </div>
-</article>
+<!DOCTYPE html>
+<html lang="en">
+    {% include head.html %}
+    <body class="outside-bottom-bar-page">
+        <!--PRELOADER-->
+        <div id="preloader">
+            <div class="alignment">
+                <div class="v-align center-middle">
+                    <!-- LEFT HEART -->
+                    <div class="heart-animation">
+                        <i class="de-icon-heart"></i>
+                    </div>
+                    <!-- RIGHT HEART -->
+                    <div class="heart-animation-reverse">
+                        <i class="de-icon-heart"></i>
+                    </div>
+                </div>
+            </div>
+        </div> <!--END of PRELOADER-->
+        <section class="menu-on-top">
+            {% include main-nav.html %}
+        </section>
+        <!--CONTENT SECTION-->
+        {{ content }}
+        <!-- FOOTER SECTION -->
+        <script src="https://maps.googleapis.com/maps/api/js"></script>
+        <script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerwithlabel/src/markerwithlabel.js"></script>
+        <!-- inject:js -->
+        <script src="/assets/javascript/index.js"></script>
+        <!-- endinject -->
+    </body>
+</html>
