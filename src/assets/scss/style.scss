@@ -1,5 +1,6 @@
 // The main SCSS file for everything, yep
-@import '../css/bootstrap/bootstrap';
+/*@import '../css/bootstrap/bootstrap';*/
+@import 'bootstrap';
 @import '../css/preloader';
 @import '../css/preloader-default';
 @import '../css/flexslider/flexslider';
@@ -17,6 +18,24 @@
 
 section#travel {
   background-color: #f6f6f6;
+
+  #hotels {
+    padding: 50px 0; 
+
+    .hotel-item {
+      margin-bottom: 20px;
+    }
+  }
+
+  section#cebu-video-section {
+    padding: 50px 0;
+
+    #cebu-video {
+      width: 100%;
+      height: 480px; 
+    }
+
+  }
 }
 
 #save-the-date {
@@ -38,20 +57,16 @@ section#travel {
   }
 }
 
-#hotels {
-  padding: 50px 0; 
-
-  .hotel-item {
-    margin-bottom: 20px;
-  }
-}
 
 #where-when {
   padding-bottom: 0px;
 }
 
-#guest-info{
-  padding: 140px 0
+#guest-info, #entourage {
+  padding: 80px 0;
+  @media (min-width: $screen-md-min) {
+    padding: 140px 0
+  }
 }
 
 h1#travel-and-accomodation-title
@@ -63,4 +78,5 @@ h1#travel-and-accomodation-title
   text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
 }
 
+@import './modules/dress-code';
 @import '../css/skin/coral-sand/coral-sand';

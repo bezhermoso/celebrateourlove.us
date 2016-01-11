@@ -1,13 +1,13 @@
 'use strict';
 
-/*============================== 
+/*==============================
   - Template Name: FOREVER - Responsive HTML Wedding Template
   - Author: DoubleEight
   - Version: 1.0
   - Website: www.dethemes.com
   ================================= */
 
-/*---------------------- 
+/*----------------------
   Script Guide
   ------------------------
   01. BROWSER AGENT FUNCTION
@@ -76,7 +76,7 @@
 var Markers = Markers || {};
 
 Markers.createMarker = function (markerDefinition, map) {
-  var options = markerDefinition.options; 
+  var options = markerDefinition.options;
   options.position = markerDefinition.coordinates();
   options.labelAnchor = markerDefinition.labelAnchor();
   options.map = map;
@@ -136,7 +136,7 @@ Markers.reception = {
 
 $(document).ready(function() {
 
-  // 01. BROWSER AGENT FUNCTION		
+  // 01. BROWSER AGENT FUNCTION
   //==================================================================================
 
   // 01.1 Check Chrome (Mobile / Tablet)
@@ -157,7 +157,7 @@ $(document).ready(function() {
     }
   }
 
-  // 01.3 Check FIREFOX 
+  // 01.3 Check FIREFOX
   //----------------------------------------------------------------------------------
   var is_firefox = function is_firefox() {
     if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
@@ -175,7 +175,7 @@ $(document).ready(function() {
 
   // 01.5 Check IE11
   //----------------------------------------------------------------------------------
-  var isIE11 = function isIE11() {	
+  var isIE11 = function isIE11() {
     if (!!navigator.userAgent.match(/Trident\/7\./)) {
       return 1;
     }
@@ -183,7 +183,7 @@ $(document).ready(function() {
 
   // 01.6 Check IE11 (Not Windows Phone)
   ///----------------------------------------------------------------------------------
-  var isIE11desktop = function isIE11desktop() {	
+  var isIE11desktop = function isIE11desktop() {
     if (!!navigator.userAgent.match(/Trident\/7\./) && window.navigator.userAgent.indexOf("Windows Phone") < 0) {
       return 1;
     }
@@ -214,19 +214,19 @@ $(document).ready(function() {
   }
 
 
-  // 02. FULLSCREEN CLASS		
+  // 02. FULLSCREEN CLASS
   //==================================================================================
   var fullscreen = function(){
     var fheight = $(window).height();
-    $('.fullscreen').css("height",fheight);		
+    $('.fullscreen').css("height",fheight);
   }
 
   //Execute on load
   fullscreen();
 
   //Execute on window resize
-  $(window).resize(function() {	
-    fullscreen();	
+  $(window).resize(function() {
+    fullscreen();
   });
 
   // 03. HIDDEN ALL ANIMATION CLASS
@@ -235,7 +235,7 @@ $(document).ready(function() {
   if( !device.tablet() && !device.mobile() && !isIE9() ) {
     $('.animation').css({
       visibility: 'hidden'
-    });	
+    });
   }
 
   // 04. PACE PRELOADER
@@ -278,7 +278,7 @@ $(document).ready(function() {
     }
 
     // 04.3 Waypoint Sticky Navbar
-    //------------------------------------------------------------------------------		
+    //------------------------------------------------------------------------------
     if ($("#nav-bar").hasClass("sticky-nav")){
 
       // 04.3.1 Top Bar
@@ -324,7 +324,7 @@ $(document).ready(function() {
 
         }, {
           offset:'-145px'
-        });		
+        });
       }
 
     }
@@ -347,7 +347,7 @@ $(document).ready(function() {
 
     // 04.5 Waypoint Animate CSS
     //------------------------------------------------------------------------------
-    if( !device.tablet() && !device.mobile() && !isIE9() ) {	
+    if( !device.tablet() && !device.mobile() && !isIE9() ) {
       $('.animation').each(function(){
         var _this = this;
         var animation_waypoint = new Waypoint({
@@ -360,7 +360,7 @@ $(document).ready(function() {
         });
       });
 
-    }		
+    }
 
     // 04.6 Stellar Parallax
     //------------------------------------------------------------------------------
@@ -376,7 +376,7 @@ $(document).ready(function() {
 
 
   // 05. PRELOADER HEART ANIMATION (IE10 / 11)
-  //==================================================================================	
+  //==================================================================================
   if (isIE10() || isIE11()){
     $(".heart-animation").css("letter-spacing","normal");
   }
@@ -390,14 +390,14 @@ $(document).ready(function() {
   // 06. BIND TOUCH FOR PHOTO ITEM (Mobile / Tablet)
   //==================================================================================
   $('.photo-item').bind('touchstart touchend', function(e) {
-  });	
+  });
 
   // 07. COUNTDOWN
   //===================================================================================
   var theday = new Date();
   theday = new Date(2016, 3, 10);
   $('#countdown').countdown({until: theday, format: 'WDHMS'});
-  $('#countdown').countdown($.countdown.regionalOptions['custom-label']); 
+  $('#countdown').countdown($.countdown.regionalOptions['custom-label']);
 
   $('#date-countdown').countdown({until: theday, format: 'WDHMS'});
 
@@ -408,7 +408,7 @@ $(document).ready(function() {
       $("#nav-menu").toggleClass("open");
   });
 
-  // Hide Menu After Click It. Will be used on onepage version. 
+  // Hide Menu After Click It. Will be used on onepage version.
   $("#nav-menu li a").click(function(){
     if ($(this).attr("href") !== "#") {
       $("#nav-menu").removeClass("open");
@@ -419,7 +419,7 @@ $(document).ready(function() {
   //==================================================================================
   if ($(window).width() > 991){
     $( '#nav-menu' ).doubleTapToGo();
-  }	 
+  }
 
   // 10. OWL CAROUSEL
   //==================================================================================
@@ -428,7 +428,7 @@ $(document).ready(function() {
   //------------------------------------------------------------------------------
   if ($("#gift-registry").length){
     $("#gift-registry").owlCarousel({
-      items : 3, 
+      items : 3,
       autoPlay: 2000,
       stopOnHover: true,
       pagination: true,
@@ -442,27 +442,27 @@ $(document).ready(function() {
 
   // 10.2 OWL CAROUSEL - MORE EVENTS (ONEPAGE)
   //------------------------------------------------------------------------------
-  if ($("#events-carousel").length){		
+  if ($("#events-carousel").length){
     $("#events-carousel").owlCarousel({
       items : 2,
-      itemsDesktopSmall: [979,2], 
+      itemsDesktopSmall: [979,2],
       autoPlay: 2000,
       stopOnHover: true,
       pagination: true,
       navigation:false,
-    });		
+    });
 
     if (device.tablet() || device.mobile()) {
       var owl_events = $("#events-carousel").data('owlCarousel');
       owl_events.stop()
-    }	
+    }
   }
 
   // 10.3 OWL CAROUSEL - REGISTRY LOGO (ONEPAGE)
   //------------------------------------------------------------------------------
-  if ($("#registry-logo").length){		
+  if ($("#registry-logo").length){
     $("#registry-logo").owlCarousel({
-      items : 3, 
+      items : 3,
       autoPlay: 2000,
       stopOnHover: true,
       pagination: false,
@@ -499,18 +499,18 @@ $(document).ready(function() {
       $(this).parent().siblings().children(".custom-option-icon").removeClass( "active-icon" );
       $(this).addClass( "active-icon" );
     }
-  });	 
+  });
 
   // 12. SMOOTH SCROLL
   //=========================================================================
   $('a.smooth-scroll').smoothScroll({
     speed: 1000,
-  });	 
+  });
 
   $('.nav-smooth-scroll a').smoothScroll({
     speed: 1000,
     offset: -80,
-  });	
+  });
 
   // 13. MAGNIFIC POPUP
   //==================================================================================
@@ -535,7 +535,7 @@ $(document).ready(function() {
   });
 
   // 13.2 Magnific Zoom Gallery
-  //----------------------------------------------------------------------------------	
+  //----------------------------------------------------------------------------------
   $('.magnific-zoom-gallery').magnificPopup({
     type: 'image',
     image: {
@@ -554,14 +554,14 @@ $(document).ready(function() {
         // Will fire when popup is closed
       }
     },
-  });	 
+  });
 
   // MAGNIFIC AJAX
   //==================================================================================
   $('.magnific-ajax').magnificPopup({
     type: 'ajax',
     ajax: {
-      settings: {cache:false} 
+      settings: {cache:false}
                 // Ajax settings object that will extend default one - http://api.jquery.com/jQuery.ajax/#jQuery-ajax-settings
                 // For example:
                 // settings: {cache:false, async:false}
@@ -575,7 +575,7 @@ $(document).ready(function() {
 
       }
     },
-  });		
+  });
 
   // 14. DISALBE TRANSITION (Mobile / Tablet)
   //==================================================================================
@@ -584,9 +584,9 @@ $(document).ready(function() {
       // de-icon
       $(".de-icon, .de-icon i").css("transition","none");
 
-      // Photo-item		 
+      // Photo-item
       $(".photo-item img.hover-animation").css("transition","none");
-      $(".photo-item .layer.hover-animation").css("transition","none"); 
+      $(".photo-item .layer.hover-animation").css("transition","none");
     }
   }
 
@@ -596,22 +596,22 @@ $(document).ready(function() {
 
   // 15.1 Reset Mute Control (Chrome and Safari Mobile)
   //----------------------------------------------------------------------------------
-  //	Chrome and Safari IOS not cannot autoplay audio. 
+  //	Chrome and Safari IOS not cannot autoplay audio.
   //	Default audio will reset to mute
   if (isChromeMobile() || isIOS()){
-    var audioElm = document.getElementById('audioID');	
+    var audioElm = document.getElementById('audioID');
 
     if (audioElm != null){
       audioElm.muted = true;
 
       var mute_icon = $("#mute-audio").data("mute-icon");
-      var unmute_icon = $("#mute-audio").data("unmute-icon");		
+      var unmute_icon = $("#mute-audio").data("unmute-icon");
 
       $("#mute-audio").removeAttr('data-start').attr({ 'data-start': 'mute' });
       $("#mute-audio").removeAttr('data-mute-icon').attr({ 'data-mute-icon': unmute_icon });
       $("#mute-audio").removeAttr('data-unmute-icon').attr({ 'data-unmute-icon': mute_icon });
       $("#mute-audio i").removeClass();
-      $("#mute-audio i").addClass(mute_icon);	
+      $("#mute-audio i").addClass(mute_icon);
     }
   }
 
@@ -620,7 +620,7 @@ $(document).ready(function() {
   //----------------------------------------------------------------------------------
   $("#mute-audio").click(function(e){
     e.preventDefault();
-    var audioElm = document.getElementById('audioID');		
+    var audioElm = document.getElementById('audioID');
 
     var on_start = $(this).data("start");
     var mute_icon = $(this).data("mute-icon");
@@ -631,7 +631,7 @@ $(document).ready(function() {
         $("#mute-audio i").removeClass( unmute_icon );
         $("#mute-audio i").addClass( mute_icon );
         if (isIOS()){
-          //Because of IOS cannot mute by script, then change it to pause.				
+          //Because of IOS cannot mute by script, then change it to pause.
           audioElm.pause();
         }
         else

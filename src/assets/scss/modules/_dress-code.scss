@@ -1,0 +1,72 @@
+@mixin palette-color ($diameter, $color) {
+  border-radius: 50%;
+  height: $diameter;
+  width: $diameter;
+  background-color: $color;
+}
+
+section#dress-code
+{
+  background-color: #F6F6F6; 
+
+  #theme-colors.main-section {
+    padding: 50px 0;
+    padding-bottom: 0px;
+
+    .palette {
+      text-align: center;
+      .palette-item {
+        margin: 0 20px;
+        text-align: center;
+        display: inline-block;
+        .color-label {
+        }
+        .color {
+          margin-bottom: 10px;
+        }
+      }
+    }
+    .palette-color {
+      border: 5px solid #FFFFFF;
+    }
+
+    $palette-diameter: 100px;
+    .palette-mint {
+      @include palette-color($palette-diameter, #BEE0D1); 
+    }
+
+    .palette-grayed-jade {
+      @include palette-color($palette-diameter, #AFD0C7); 
+    }
+
+    .palette-taupe {
+      @include palette-color($palette-diameter, #EDE0CF); 
+    }
+
+    .palette-peach {
+      @include palette-color($palette-diameter, #F7C8B6); 
+    }
+
+    .palette-coral-sand {
+      @include palette-color($palette-diameter, #F7907F); 
+    }
+
+  }
+
+  #things-you-could-wear.main-section {
+    padding: 50px 0;
+
+    .dress-item {
+      margin-bottom: 40px;
+    }
+  }
+
+  #dress-code-title {
+    text-align: center;
+    font-size: 60px;
+    padding: 60px 0;
+    font-family: "Pacifico", cursive;
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+  }
+}
+

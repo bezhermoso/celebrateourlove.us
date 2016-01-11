@@ -45,14 +45,14 @@ gulp.task('jekyll', done => {
     shell.exec('jekyll build');
     done();
   } else if (argv.prod) {
-    shell.exec('jekyll build --config _config.yml,_config.build.yml');
+    shell.exec('bundle exec jekyll build --config _config.yml,_config.build.yml');
     done();
   }
 });
 
 // 'gulp doctor' -- literally just runs jekyll doctor
 gulp.task('jekyll:doctor', done => {
-  shell.exec('jekyll doctor');
+  shell.exec('bundle exec jekyll doctor');
   done();
 });
 
@@ -64,7 +64,8 @@ gulp.task('styles', () =>
   gulp.src('src/assets/scss/style.scss')
     .pipe($.if(!argv.prod, $.sourcemaps.init()))
     .pipe($.sass({
-      precision: 10
+      precision: 10,
+      includePaths: ['bower_components/bootstrap-sass/assets/stylesheets']
     }).on('error', $.sass.logError))
     .pipe($.postcss([
       autoprefixer({browsers: 'last 1 version'})
