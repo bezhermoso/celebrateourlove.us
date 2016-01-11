@@ -78,5 +78,19 @@ h1#travel-and-accomodation-title
   text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
 }
 
+.amazon-btn {
+  background-color: #222F3F;
+  border: 2px solid #222F3F;
+  color: #FE9B00;
+  transition-property: background-color, color;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-out;
+  &:hover {
+    color: #222F3F;
+    background-color: #FE9B00;
+    border-color: #222F3F;
+  }
+}
+
 @import './modules/dress-code';
 @import '../css/skin/coral-sand/coral-sand';
