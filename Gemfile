@@ -11,6 +11,7 @@ gem 'jekyll-paginate'
 gem 'jekyll-feed'
 gem 'jekyll-gist'
 gem 'bootstrap-sass'
+gem "s3_website"
 
 # octopress
 gem 'octopress', '~> 3.0'

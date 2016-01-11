@@ -76,19 +76,19 @@ gulp.task('styles', () =>
     }))
     .pipe($.if(argv.prod, $.rename({suffix: '.min'})))
     .pipe($.if(argv.prod, $.if('*.css', $.minifyCss())))
-    .pipe($.if(argv.prod, $.size({
-      title: 'minified styles',
-      showFiles: true
-    })))
+    //.pipe($.if(argv.prod, $.size({
+      //title: 'minified styles',
+      //showFiles: true
+    //})))
     .pipe($.if(argv.prod, $.rev()))
     .pipe($.if(!argv.prod, $.sourcemaps.write('.')))
-    .pipe($.if(argv.prod, gulp.dest('.tmp/assets/stylesheets')))
-    .pipe($.if(argv.prod, $.if('*.css', $.gzip({append: true}))))
-    .pipe($.if(argv.prod, $.size({
-      title: 'gzipped styles',
-      gzip: true,
-      showFiles: true
-    })))
+    .pipe($.if(argv.prod, gulp.dest('dist/assets/stylesheets')))
+    //.pipe($.if(argv.prod, $.if('*.css', $.gzip({append: true}))))
+    //.pipe($.if(argv.prod, $.size({
+      //title: 'gzipped styles',
+      //gzip: true,
+      //showFiles: true
+    //})))
     .pipe(gulp.dest('.tmp/assets/stylesheets'))
     .pipe($.if(!argv.prod, browserSync.stream()))
 );
@@ -136,19 +136,19 @@ gulp.task('scripts', () =>
     }))
     .pipe($.if(argv.prod, $.rename({suffix: '.min'})))
     .pipe($.if(argv.prod, $.if('*.js', $.uglify({preserveComments: 'some'}))))
-    .pipe($.if(argv.prod, $.size({
-      title: 'minified scripts',
-      showFiles: true
-    })))
+    //.pipe($.if(argv.prod, $.size({
+      //title: 'minified scripts',
+      //showFiles: true
+    //})))
     .pipe($.if(argv.prod, $.rev()))
     .pipe($.if(!argv.prod, $.sourcemaps.write('.')))
-    .pipe($.if(argv.prod, gulp.dest('.tmp/assets/javascript')))
-    .pipe($.if(argv.prod, $.if('*.js', $.gzip({append: true}))))
-    .pipe($.if(argv.prod, $.size({
-      title: 'gzipped scripts',
-      gzip: true,
-      showFiles: true
-    })))
+    .pipe($.if(argv.prod, gulp.dest('dist/assets/javascript')))
+    //.pipe($.if(argv.prod, $.if('*.js', $.gzip({append: true}))))
+    //.pipe($.if(argv.prod, $.size({
+      //title: 'gzipped scripts',
+      //gzip: true,
+      //showFiles: true
+    //})))
     .pipe(gulp.dest('.tmp/assets/javascript'))
     .pipe($.if(!argv.prod, browserSync.stream()))
 );
@@ -176,6 +176,7 @@ gulp.task('images', () =>
       progressive: true,
       interlaced: true
     })))
+    .pipe($.if(argv.prod, gulp.dest('dist/assets/images')))
     .pipe(gulp.dest('.tmp/assets/images'))
     .pipe($.size({title: 'images'}))
 );
@@ -183,6 +184,7 @@ gulp.task('images', () =>
 // 'gulp fonts' -- copies your fonts to the temporary assets folder
 gulp.task('fonts', () =>
   gulp.src('src/assets/fonts/**/*')
+    .pipe($.if(argv.prod, gulp.dest('dist/assets/fonts')))
     .pipe(gulp.dest('.tmp/assets/fonts'))
     .pipe($.size({title: 'fonts'}))
 );
